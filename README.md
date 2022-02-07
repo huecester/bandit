@@ -332,3 +332,28 @@ $ ./suconnect 3030
 Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 Password matches, sending next password
 ```
+
+## bandit22
+Find a cronjob running for bandit22.
+```bash
+$ cat /etc/cron.d/cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+* * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
+```
+The most important part of this file is the command, `/usr/bin/cronjob_bandit22.sh`, which the group `bandit21` can read, and our current user is a part of that group.
+
+```bash
+$ ls -l /usr/bin/cronjob_bandit22.sh
+-rwxr-x--- 1 bandit22 bandit21 130 May  7  2020 /usr/bin/cronjob_bandit22.sh
+
+$ cat /usr/bin/cronjob_bandit22.sh
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+```
+This file shows bandit22's password being put into the file at `/tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv`.
+
+```bash
+$ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+```
