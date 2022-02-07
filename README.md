@@ -177,6 +177,7 @@ $ cp ~/data.txt .
 $ xxd -r data.txt data.gz
 ```
 At this point, continuously decompress the file using `gunzip [file]`, `bunzip2 [file]`, or `tar -xf [file]`. Note that to use `gunzip`, the file must end in `.gz`.
+
 ```bash
 $ cat data8
 The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
@@ -278,6 +279,7 @@ vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
 closed
 ```
 `ssh` into bandit17 and `cat /etc/bandit_pass/bandit17`.
+
 ```bash
 $ cat /etc/bandit_pass/bandit17
 xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
