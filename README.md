@@ -150,3 +150,16 @@ VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==
 $ base64 -d data.txt
 The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 ```
+
+## bandit12
+Decode the ROT13 ciphertext in `data.txt`. I used `tr`, but you can also use a website like [dcode.fr](https://www.dcode.fr/rot-13-cipher).
+```bash
+$ ls
+data.txt
+
+$ cat data.txt
+Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
+
+$ cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+```
