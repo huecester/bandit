@@ -17,3 +17,13 @@ Read the `-` file. Trying to `cat` the file `-` will make `cat` read from stdin.
 $ cat ./-
 CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
 ```
+
+## bandit3
+Read the `spaces in this filename` file. Use backslashes to escape the spaces or use quotes.
+```bash
+$ cat spaces\ in\ this\ filename
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+$ cat 'spaces in this filename'
+UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+```
