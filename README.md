@@ -193,3 +193,16 @@ $ ssh -i sshkey.private bandit14@localhost
 $ cat /etc/bandit_pass/bandit14
 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
 ```
+
+## bandit15
+Enter bandit14's password to the process binded to port 30000 using netcat.
+```bash
+$ nc localhost 30000
+bazinga
+Wrong! Please enter the correct current password
+
+$ nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+```
