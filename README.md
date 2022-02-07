@@ -112,3 +112,15 @@ data.txt
 $ cat data.txt | grep millionth
 millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
 ```
+
+## bandit9
+Find the line in `data.txt` that occurs only once. Use `uniq` and `sort`.
+```bash
+$ ls
+data.txt
+
+$ cat data.txt | sort | uniq -u
+UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+```
+`sort` sorts all lines alphabetically as `uniq` requires to remove duplicate lines.
+`uniq -u` takes the input and deletes all repeated lines, printing only unique lines.
