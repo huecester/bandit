@@ -92,3 +92,13 @@ $ find . -size 1033c
 $ cat ./maybehere07/.file2
 DXjZPULLxYr17uwoI01bNLQbtFemEgo7
 ```
+
+## bandit7
+Find the file owned by user `bandit7` and group `bandit6`, and is 33 bytes in size.
+```bash
+$ find / -user bandit7 -group bandit6 -size 33c
+/var/lib/dpkg/info/bandit7.password
+
+$ cat /var/lib/dpkg/info/bandit7.password
+HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+```
