@@ -338,6 +338,15 @@ Password matches, sending next password
 ## bandit22
 Find the cronjob running for bandit22.
 ```bash
+$ ls -l /etc/cron.d
+total 24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit15_root
+-rw-r--r-- 1 root root  62 Jul 11  2020 cronjob_bandit17_root
+-rw-r--r-- 1 root root 120 May  7  2020 cronjob_bandit22
+-rw-r--r-- 1 root root 122 May  7  2020 cronjob_bandit23
+-rw-r--r-- 1 root root 120 May 14  2020 cronjob_bandit24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit25_root
+
 $ cat /etc/cron.d/cronjob_bandit22
 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
 * * * * * bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
@@ -358,4 +367,42 @@ This file shows bandit22's password being put into the file at `/tmp/t7O6lds9S0R
 ```bash
 $ cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
 Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
+```
+
+## bandit23
+Find the cronjob running for bandit23.
+```bash
+$ ls -l /etc/cron.d
+total 24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit15_root
+-rw-r--r-- 1 root root  62 Jul 11  2020 cronjob_bandit17_root
+-rw-r--r-- 1 root root 120 May  7  2020 cronjob_bandit22
+-rw-r--r-- 1 root root 122 May  7  2020 cronjob_bandit23
+-rw-r--r-- 1 root root 120 May 14  2020 cronjob_bandit24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit25_root
+
+$ cat /etc/cron.d/cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+* * * * * bandit23 /usr/bin/cronjob_bandit23.sh  &> /dev/null
+
+$ cat /usr/bin/cronjob_bandit23.sh
+#!/bin/bash
+
+myname=$(whoami)
+mytarget=$(echo I am user $myname | md5sum | cut -d ' ' -f 1)
+
+echo "Copying passwordfile /etc/bandit_pass/$myname to /tmp/$mytarget"
+
+cat /etc/bandit_pass/$myname > /tmp/$mytarget
+```
+This shell script copies the password of the user executing the script to a file.
+If bandit23 were to run the file, bandit23's password would be copied to the file with a name equivalent to the MD5 hash of "I am user bandit23".
+The `cut -d ' ' -f 1` extracts the pure MD5 hash from the command's output, which includes the filename to the right of the hash.
+
+```bash
+$ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
+8ca319486bfbbc3663ea0fbe81326349
+
+$ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
 ```
