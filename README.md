@@ -49,12 +49,15 @@ $ cd inhere
 $ ls
 -file00  -file01  -file02  -file03  -file04  -file05  -file06  -file07  -file08  -file09
 
-$ find . -exec grep -ie "^[a-z0-9]\+$" {} 2>/dev/null \; -print
+$ find . -exec grep -qie "^[a-z0-9]\+$" {} 2>/dev/null \; -print
 koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 ./-file07
 ```
 `find` finds all files matching the conditions given.
 	`-exec` executes the given command for each file, inserting the filename at `{}` and ending the command at `\;`.
-		`grep` looks for a pattern in a given file. The flag `-i` makes the search case insensitive, and the flag `-e` takes a regex as input.
+		`grep` looks for a pattern in a given file.
+			The flag `-q` makes `grep` not print anything.
+			The flag `-i` makes the search case insensitive.
+			The flag `-e` takes a regex as input.
 		`2>/dev/null` redirects stderr to /dev/null, basically hiding the errors.
 	The flag `-print` prints the filename to stdout.
