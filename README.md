@@ -163,3 +163,21 @@ Gur cnffjbeq vf 5Gr8L4qetPEsPk8htqjhRK8XSP6x2RHh
 $ cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 The password is 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
 ```
+
+## bandit13
+Reverse the hexdump in `data.txt` and decompress the file. As OverTheWire suggests, it's best to create a directory in `/tmp` and copy the file over.
+```bash
+$ ls
+data.txt
+
+$ mkdir /tmp/bazinga
+$ cd /tmp/bazinga
+$ cp ~/data.txt .
+
+$ xxd -r data.txt data.gz
+```
+At this point, continuously decompress the file using `gunzip [file]`, `bunzip2 [file]`, or `tar -xf [file]`. Note that to use `gunzip`, the file must end in `.gz`.
+```bash
+$ cat data8
+The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+```
