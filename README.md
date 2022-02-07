@@ -137,3 +137,16 @@ $ strings data.txt | grep '==='
 Z)========== is
 &========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
 ```
+
+## bandit11
+Decode the base64 in `data.txt`.
+```bash
+$ ls
+data.txt
+
+$ cat data.txt
+VGhlIHBhc3N3b3JkIGlzIElGdWt3S0dzRlc4TU9xM0lSRnFyeEUxaHhUTkViVVBSCg==
+
+$ base64 -d data.txt
+The password is IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+```
