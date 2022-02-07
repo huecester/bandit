@@ -27,3 +27,16 @@ UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 $ cat 'spaces in this filename'
 UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
 ```
+
+## bandit4
+Read the `.hidden` file in the `inhere` directory. Use `ls -a` to list hidden files (files beginning with a `.`).
+```bash
+$ cd inhere
+
+$ ls
+$ ls -a
+. .. .hidden
+
+$ cat .hidden
+pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+```
