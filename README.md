@@ -61,3 +61,34 @@ koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 			The flag `-e` takes a regex as input.
 		`2>/dev/null` redirects stderr to /dev/null, basically hiding the errors.
 	The flag `-print` prints the filename to stdout.
+
+## bandit6
+Find the human-readable, 1033 byte, non-executable file in `inhere` and read it. I used `find`, and there was only one file with exactly 1033 bytes.
+```bash
+$ cd inhere
+
+$ ls
+maybehere00  maybehere03  maybehere06  maybehere09  maybehere12  maybehere15  maybehere18
+maybehere01  maybehere04  maybehere07  maybehere10  maybehere13  maybehere16  maybehere19
+maybehere02  maybehere05  maybehere08  maybehere11  maybehere14  maybehere17
+
+$ ls -la maybehere00
+total 72
+drwxr-x---  2 root bandit5 4096 May  7  2020 .
+drwxr-x--- 22 root bandit5 4096 May  7  2020 ..
+-rwxr-x---  1 root bandit5 1039 May  7  2020 -file1
+-rwxr-x---  1 root bandit5  551 May  7  2020 .file1
+-rw-r-----  1 root bandit5 9388 May  7  2020 -file2
+-rw-r-----  1 root bandit5 7836 May  7  2020 .file2
+-rwxr-x---  1 root bandit5 7378 May  7  2020 -file3
+-rwxr-x---  1 root bandit5 4802 May  7  2020 .file3
+-rwxr-x---  1 root bandit5 6118 May  7  2020 spaces file1
+-rw-r-----  1 root bandit5 6850 May  7  2020 spaces file2
+-rwxr-x---  1 root bandit5 1915 May  7  2020 spaces file3
+
+$ find . -size 1033c
+./maybehere07/.file2
+
+$ cat ./maybehere07/.file2
+DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+```
