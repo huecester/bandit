@@ -102,3 +102,13 @@ $ find / -user bandit7 -group bandit6 -size 33c
 $ cat /var/lib/dpkg/info/bandit7.password
 HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
 ```
+
+## bandit8
+Find the password next to the word `millionth` in `data.txt`. Use `grep` to find the line with the word `millionth`.
+```bash
+$ ls
+data.txt
+
+$ cat data.txt | grep millionth
+millionth       cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+```
