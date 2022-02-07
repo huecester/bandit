@@ -124,3 +124,16 @@ UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
 ```
 `sort` sorts all lines alphabetically as `uniq` requires to remove duplicate lines.
 `uniq -u` takes the input and deletes all repeated lines, printing only unique lines.
+
+## bandit10
+Find the human-readable line preceded by multiple `=` signs in `data.txt`. Use `strings` to find human-readable lines.
+```bash
+$ ls
+data.txt
+
+$ strings data.txt | grep '==='
+========== the*2i"4
+========== password
+Z)========== is
+&========== truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+```
