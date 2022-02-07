@@ -311,3 +311,24 @@ Run a command as another user.
 $ ./bandit20-do cat /etc/bandit_pass/bandit20
 GbKksEFF4yrVs6il55v6gwY5aVje5f0j
 ```
+
+## bandit21
+Use `suconnect` along with a TCP server using `nc` to get the next password.
+```bash
+$ ls
+suconnect
+
+$ ./suconnect
+Usage: ./suconnect <portnumber>
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+
+# Connection 1
+$ nc -lvp 3030
+GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+# Connection 2
+$ ./suconnect 3030
+Read: GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+Password matches, sending next password
+```
