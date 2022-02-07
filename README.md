@@ -10,3 +10,10 @@ Read the `readme` file.
 $ cat readme
 boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 ```
+
+## bandit2
+Read the `-` file. Trying to `cat` the file `-` will make `cat` read from stdin.
+```bash
+$ cat ./-
+CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9
+```
