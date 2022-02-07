@@ -181,3 +181,15 @@ At this point, continuously decompress the file using `gunzip [file]`, `bunzip2 
 $ cat data8
 The password is 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
 ```
+
+## bandit14
+Use the private ssh key to login to bandit14 and read the password in `/etc/bandit_pass/bandit14`. You can either ssh directly from the server, or you can copy the private key to your machine using `scp`.
+```bash
+$ ls
+sshkey.private
+
+$ ssh -i sshkey.private bandit14@localhost
+
+$ cat /etc/bandit_pass/bandit14
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+```
