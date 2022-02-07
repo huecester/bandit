@@ -206,3 +206,21 @@ $ nc localhost 30000
 Correct!
 BfMYroe26WYalil77FoDi9qh59eK5xNr
 ```
+
+## bandit16
+Enter bandit15's password to port 30001 with SSL. Use `openssl`'s `s_client` tool.
+```bash
+$ openssl s_client -connect localhost:30001
+CONNECTED(00000003)
+depth=0 CN = localhost
+verify error:num=18:self signed certificate
+verify return:1
+depth=0 CN = localhost
+verify return:1
+...
+BfMYroe26WYalil77FoDi9qh59eK5xNr
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd
+
+closed
+```
