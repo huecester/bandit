@@ -336,7 +336,7 @@ Password matches, sending next password
 ```
 
 ## bandit22
-Find a cronjob running for bandit22.
+Find the cronjob running for bandit22.
 ```bash
 $ cat /etc/cron.d/cronjob_bandit22
 @reboot bandit22 /usr/bin/cronjob_bandit22.sh &> /dev/null
