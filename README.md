@@ -515,3 +515,13 @@ To break out of `more`, we can shrink the terminal to keep `more` from exiting, 
 $ cat /etc/bandit_pass/bandit26
 5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
 ```
+
+## bandit27
+Use the setuid binary. Same solution as bandit20.
+```bash
+$ ls
+bandit27-do  text.txt
+
+$ ./bandit27-do cat /etc/bandit_pass/bandit27
+3ba3118a22e93127a4ed485be72ef5ea
+```
