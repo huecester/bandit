@@ -703,3 +703,42 @@ secret
 $ git show secret
 47e603bb428404d265f59c42920d81e5
 ```
+
+## bandit31
+Clone the repo and find the password.
+```bash
+$ git clone bandit31-git@localhost:~/repo
+...
+
+$ cd repo
+
+$ ls
+README.md
+
+$ cat README.md
+This time your task is to push a file to the remote repository.
+
+Details:
+    File name: key.txt
+    Content: 'May I come in?'
+    Branch: master
+```
+First, delete the .gitignore file preventing any `.txt` files from being added, then push `key.txt`.
+
+```bash
+$ rm .gitignore
+
+$ echo 'May I come in?' > key.txt
+
+$ git add . && git commit -m 'bazinga' && git push
+...
+remote: ### Attempting to validate files... ####
+remote:
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+remote:
+remote: Well done! Here is the password for the next level:
+remote: 56a9bf19c63d650ce78e6ec0354ee45e
+remote:
+remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
+...
+```
