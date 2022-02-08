@@ -679,3 +679,27 @@ Some notes for bandit30 of bandit.
 - username: bandit30
 - password: 5b90576bedb2cc04c86a9e924ce42faf
 ```
+
+## bandit30
+Clone the repo and find the password.
+```bash
+$ git clone bandit30-git@localhost:~/repo
+...
+
+$ cd repo
+
+$ ls
+README.md
+
+$ cat README.md
+just an epmty file... muahaha
+```
+The log doesn't show any other commits, and there aren't any branches. Another thing we can try is showing tags.
+
+```bash
+$ git tag
+secret
+
+$ git show secret
+47e603bb428404d265f59c42920d81e5
+```
