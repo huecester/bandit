@@ -601,3 +601,81 @@ index 7ba2d2f..3f7cee8 100644
 -- password: <TBD>
 +- password: bbc96594b4e001778eee9975372716b2
 ```
+
+## bandit30
+Clone the git repo and find the password.
+```bash
+$ git clone bandit-29@localhost:~/repo
+...
+
+$ cd repo
+
+$ ls
+README.md
+
+$ cat README.md
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: <no passwords in production!>
+
+$ git log
+commit 208f463b5b3992906eabf23c562eda3277fea912
+Author: Ben Dover <noone@overthewire.org>
+Date:   Thu May 7 20:14:51 2020 +0200
+
+    fix username
+
+commit 18a6fd6d5ef7f0874bbdda2fa0d77b3b81fd63f7
+Author: Ben Dover <noone@overthewire.org>
+Date:   Thu May 7 20:14:51 2020 +0200
+
+    initial commit of README.md
+```
+Looking through the commits doesn't show anything of use. However, the `<no passwords in production!>` hints about another branch.
+
+```bash
+$ git checkout dev
+Branch dev set up to track remote branch dev from origin.
+Switched to a new branch 'dev'
+
+$ git log
+commit bc833286fca18a3948aec989f7025e23ffc16c07
+Author: Morla Porla <morla@overthewire.org>
+Date:   Thu May 7 20:14:52 2020 +0200
+
+    add data needed for development
+
+commit 8e6c203f885bd4cd77602f8b9a9ea479929ffa57
+Author: Ben Dover <noone@overthewire.org>
+Date:   Thu May 7 20:14:51 2020 +0200
+
+    add gif2ascii
+
+commit 208f463b5b3992906eabf23c562eda3277fea912
+Author: Ben Dover <noone@overthewire.org>
+Date:   Thu May 7 20:14:51 2020 +0200
+
+    fix username
+
+commit 18a6fd6d5ef7f0874bbdda2fa0d77b3b81fd63f7
+Author: Ben Dover <noone@overthewire.org>
+Date:   Thu May 7 20:14:51 2020 +0200
+
+    initial commit of README.md
+
+$ ls
+code  README.md
+
+$ cat README.md
+# Bandit Notes
+Some notes for bandit30 of bandit.
+
+## credentials
+
+- username: bandit30
+- password: 5b90576bedb2cc04c86a9e924ce42faf
+```
