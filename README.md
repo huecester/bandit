@@ -742,3 +742,14 @@ remote:
 remote: .oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.oOo.
 ...
 ```
+
+## bandit33
+Break out of the UPPERCASE SHELL. Use the environment variable `$0` to execute the `sh` shell.
+```bash
+>> $0
+$ whoami
+bandit33
+
+$ cat /etc/bandit_pass/bandit33
+c9c3199ddf4121b10cf581a98d51caee
+```
